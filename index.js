@@ -35,8 +35,3 @@ app.use('/uploads', express.static('uploads'));
 app.get('/', (req, res) => {
   res.send('✅ AounGarage backend is running');
 });
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Backend running on port ${PORT}`);
-});

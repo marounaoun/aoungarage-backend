@@ -1,14 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const db = require('./db/db'); // or wherever your DB setup is
+const db = require('./db/db'); // Adjust if needed
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
 app.use(cors());
 app.use(express.json());
 
@@ -18,7 +15,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// ✅ ROUTES (make sure all are correctly required and used)
+// ✅ ROUTES
 const repairsRouter = require('./routes/repairs');
 const clientsRouter = require('./routes/clients');
 const insuranceRouter = require('./routes/insurance');
@@ -34,4 +31,9 @@ app.use('/uploads', express.static('uploads'));
 
 app.get('/', (req, res) => {
   res.send('✅ AounGarage backend is running');
+});
+
+// ✅ Move this LAST
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });
